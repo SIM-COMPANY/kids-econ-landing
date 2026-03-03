@@ -150,54 +150,34 @@ export default function App() {
         </div>
       </section>
 
-      {/* ══ 자녀 결과 ══ */}
+      {/* ══ 자녀 이야기 ══ */}
       <section style={{ padding: '72px 24px', background: C.bg }}>
-        <div style={{ maxWidth: '580px', margin: '0 auto' }}>
-          <p style={{ color: C.textMuted, fontSize: '14px', textAlign: 'center', marginBottom: '36px', lineHeight: 1.7, letterSpacing: '-0.01em' }}>
-            어릴 때 만든 습관 하나가 평생을 따라다니더라고요.
-          </p>
-          {[
-            {
-              emoji: '👦', name: '아들 형찬이', sub: '초등학교 때 관심 있는 회사 주식을 샀습니다',
-              body: <>
-                주주가 되고 나서 뉴스를 찾아보기 시작했어요.<br />
-                경제 이야기를 제가 꺼내기 전에<br />
-                <strong>아이가 먼저 꺼내기 시작했습니다.</strong>
-              </>,
-              quote: '"아빠, 이 회사 실적이 좋아졌대요." 그 말이 아직도 기억납니다.',
-            },
-            {
-              emoji: '👧', name: '딸 은세미', sub: '초등학교 때부터 용돈을 스스로 기록했습니다',
-              body: <>
-                사달라고 조르는 대신<br />
-                "이거 살 돈 있어요"가 나오기 시작했습니다.<br />
-                <strong>작은 선택이 쌓이면서 스스로 결정하는 힘이 생겼어요.</strong>
-              </>,
-              quote: '어릴 때 자기 돈을 다뤄본 경험이 이렇게 큰 차이를 만들 줄은 몰랐습니다.',
-            },
-          ].map((c, i) => (
-            <div key={i} style={{
-              background: C.bg, border: `1px solid ${C.border}`, borderRadius: '20px',
-              padding: '26px', marginBottom: '16px',
-              boxShadow: '0 2px 12px rgba(0,0,0,0.06)',
-            }}>
-              <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
-                <span style={{ fontSize: '30px', flexShrink: 0 }}>{c.emoji}</span>
-                <div>
-                  <p style={{ fontWeight: 700, fontSize: '16px', marginBottom: '4px', letterSpacing: '-0.02em' }}>{c.name}</p>
-                  <p style={{ fontSize: '13px', color: C.textMuted }}>{c.sub}</p>
-                </div>
-              </div>
-              <p style={{ fontSize: '14px', lineHeight: 1.85, color: C.textSub, marginBottom: '16px', letterSpacing: '-0.01em' }}>{c.body}</p>
-              <div style={{
-                background: C.surface, borderRadius: '12px',
-                padding: '14px 18px', fontSize: '13px', color: '#555', lineHeight: 1.7,
-                borderLeft: `3px solid ${C.primary}`,
-              }}>
-                {c.quote}
-              </div>
-            </div>
-          ))}
+        <div style={{ maxWidth: '540px', margin: '0 auto' }}>
+          <div style={{
+            borderLeft: `4px solid ${C.primary}`, paddingLeft: '24px', marginBottom: '32px',
+          }}>
+            <p style={{ fontSize: '20px', fontWeight: 700, lineHeight: 1.7, letterSpacing: '-0.02em', marginBottom: '12px' }}>
+              두 아이가 다 컸습니다.
+            </p>
+            <p style={{ fontSize: '15px', color: C.textSub, lineHeight: 1.85, letterSpacing: '-0.01em' }}>
+              어릴 때 만든 돈 관련 습관이 아이들에게 남긴 건<br />
+              '돈을 잘 버는 법'이 아니었습니다.<br />
+              <br />
+              스스로 선택하고, 그 선택에 책임지는 연습.<br />
+              그게 쌓여서 지금의 아이들이 됐더라고요.
+            </p>
+          </div>
+          <div style={{
+            background: C.surface, borderRadius: '20px', padding: '28px 24px',
+          }}>
+            <p style={{ fontSize: '17px', fontWeight: 700, lineHeight: 1.7, letterSpacing: '-0.02em', marginBottom: '10px' }}>
+              주체적으로 사고하고,<br />정서적으로 건강한 어른.
+            </p>
+            <p style={{ fontSize: '15px', color: C.textSub, lineHeight: 1.85, letterSpacing: '-0.01em' }}>
+              그게 제가 경제교육을 통해 바란 것이었는데,<br />
+              지금 돌아보니 그렇게 됐더라고요.
+            </p>
+          </div>
         </div>
       </section>
 
