@@ -193,7 +193,7 @@ export default function App() {
               잘 된 것도 있고, 지금 와서 아쉬운 것도 있습니다.
             </p>
           </div>
-          <div style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: '20px', padding: '28px 24px', boxShadow: '0 2px 12px rgba(0,0,0,0.06)' }}>
+          <div>
             <p style={{ fontSize: '17px', fontWeight: 700, marginBottom: '12px', lineHeight: 1.65, letterSpacing: '-0.02em' }}>
               요즘 엄마들은 더 지혜롭습니다.
             </p>
