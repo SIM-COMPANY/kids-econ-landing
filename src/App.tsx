@@ -51,16 +51,9 @@ export default function App() {
           <p style={{ color: '#FF6B35', fontWeight: 700, fontSize: '13px', letterSpacing: '0.06em', marginBottom: '18px' }}>
             엉클조 × 자녀경제교육 소모임 · 평택
           </p>
-          <h1 style={{ fontSize: 'clamp(26px, 6vw, 36px)', fontWeight: 800, lineHeight: 1.35, marginBottom: '16px' }}>
+          <h1 style={{ fontSize: 'clamp(26px, 6vw, 36px)', fontWeight: 800, lineHeight: 1.35, marginBottom: '24px' }}>
             아이한테 돈 이야기,<br />어떻게 꺼내세요?
           </h1>
-          <p style={{
-            fontSize: '15px', lineHeight: 1.8, color: '#7A4A2A',
-            background: '#FFE8D6', borderRadius: '12px', padding: '14px 20px', marginBottom: '28px',
-          }}>
-            살아가면서 어떤 공부보다<br />
-            <strong>돈을 다루는 습관이 더 필요하더라고요.</strong>
-          </p>
           <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#555', marginBottom: '36px' }}>
             어렵게 안 해도 돼요.<br />
             같은 고민 하는 동네 엄마들이랑<br />
@@ -126,6 +119,13 @@ export default function App() {
             ))}
           </div>
           <div style={{ borderTop: '1px solid #333', paddingTop: '28px' }}>
+            <p style={{
+              fontSize: '15px', lineHeight: 1.8, color: '#7A4A2A',
+              background: '#FFE8D6', borderRadius: '12px', padding: '14px 20px', marginBottom: '20px',
+            }}>
+              살아가면서 어떤 공부보다<br />
+              <strong>돈을 다루는 습관이 더 필요하더라고요.</strong>
+            </p>
             <p style={{ fontSize: '17px', lineHeight: 1.85, color: '#ddd', marginBottom: '12px' }}>
               두 아이와 직접 해봤습니다.<br />
               <strong style={{ color: '#FF8C5A' }}>아이들이 다 크고 나서야 알았습니다.</strong>
@@ -233,6 +233,20 @@ export default function App() {
             </p>
           </div>
         </div>
+      </section>
+
+      {/* ══ 중간 CTA ══ */}
+      <section style={{ padding: '40px 24px', background: '#fff', textAlign: 'center' }}>
+        <p style={{ fontSize: '15px', color: '#888', marginBottom: '14px' }}>
+          이야기 나눠보고 싶어졌다면
+        </p>
+        <a href="#apply" style={{
+          display: 'inline-block', background: '#fff', color: '#FF6B35',
+          border: '2px solid #FF6B35', padding: '13px 32px',
+          borderRadius: '12px', fontWeight: 700, fontSize: '15px', textDecoration: 'none',
+        }}>
+          신청하러 가기 →
+        </a>
       </section>
 
       {/* ══ 경제공부 방법 ══ */}
