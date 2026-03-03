@@ -4,48 +4,12 @@ import type { FormEvent } from 'react';
 const FORMSPREE_ID = 'meelbwyv';
 
 const METHODS = [
-  {
-    icon: '💰',
-    title: '주간 용돈 (간섭 없이)',
-    desc: '뭐에 쓰든 안 물어봤습니다. 간섭 안 하는 게 핵심이었습니다.',
-    age: '초등 저학년~',
-    did: true,
-  },
-  {
-    icon: '📒',
-    title: '용돈 기입장',
-    desc: '잘 쓰면 상금 줬습니다. 몇 달 지나면 스스로 "이거 왜 샀지?"가 나옵니다.',
-    age: '초등 저학년~',
-    did: true,
-  },
-  {
-    icon: '🏦',
-    title: '100% 매칭 적금',
-    desc: '아이가 넣으면 아빠도 똑같이. 목표가 생기면 아끼는 이유가 생깁니다.',
-    age: '초등 중학년~',
-    did: true,
-  },
-  {
-    icon: '📈',
-    title: '주식 첫 경험',
-    desc: '아이가 아는 회사로 시작합니다. 뉴스가 달라 보이기 시작합니다.',
-    age: '초등 고학년~',
-    did: true,
-  },
-  {
-    icon: '⚖️',
-    title: '기회비용 교육',
-    desc: '선택하면 나머지는 포기. 그게 기회비용이더라고요.',
-    age: '전 연령',
-    did: false,
-  },
-  {
-    icon: '🛒',
-    title: '시장 경험',
-    desc: '마트 말고 재래시장. 살아있는 경제가 거기 있더라고요.',
-    age: '초등 전~',
-    did: false,
-  },
+  { icon: '💰', title: '주간 용돈 (간섭 없이)',   desc: '뭐에 쓰든 안 물어봤습니다. 간섭 안 하는 게 핵심이었습니다.', age: '초등 저학년~', did: true  },
+  { icon: '📒', title: '용돈 기입장',             desc: '잘 쓰면 상금 줬습니다. 몇 달 지나면 스스로 "이거 왜 샀지?"가 나옵니다.', age: '초등 저학년~', did: true  },
+  { icon: '🏦', title: '100% 매칭 적금',          desc: '아이가 넣으면 아빠도 똑같이. 목표가 생기면 아끼는 이유가 생깁니다.', age: '초등 중학년~', did: true  },
+  { icon: '📈', title: '주식 첫 경험',            desc: '아이가 아는 회사로 시작합니다. 뉴스가 달라 보이기 시작합니다.',   age: '초등 고학년~', did: true  },
+  { icon: '⚖️', title: '기회비용 교육',           desc: '선택하면 나머지는 포기. 그게 기회비용이더라고요.',               age: '전 연령',    did: false },
+  { icon: '🛒', title: '시장 경험',               desc: '마트 말고 재래시장. 살아있는 경제가 거기 있더라고요.',            age: '초등 전~',   did: false },
 ];
 
 const PROBLEMS = [
@@ -60,20 +24,7 @@ const WHO = [
   '평택·경기남부 근처에 사시는 분',
 ];
 
-const HOW = [
-  '2~3명, 카페에서 1시간 반',
-  '엉클조가 먼저 경험 나눕니다',
-  '나머지는 같이 이야기합니다',
-  '강의 아닙니다',
-];
-
-/* ─── 공통 스타일 ─── */
-const card: React.CSSProperties = {
-  background: '#fff',
-  border: '1.5px solid #FFE4CC',
-  borderRadius: '16px',
-  padding: '24px',
-};
+const HOW = ['2~3명, 카페에서 1시간 반', '엉클조가 먼저 경험 나눕니다', '나머지는 같이 이야기합니다', '강의 아닙니다'];
 
 export default function App() {
   const [submitted, setSubmitted] = useState(false);
@@ -85,22 +36,16 @@ export default function App() {
     const data = new FormData(e.currentTarget);
     try {
       const res = await fetch(`https://formspree.io/f/${FORMSPREE_ID}`, {
-        method: 'POST',
-        body: data,
-        headers: { Accept: 'application/json' },
+        method: 'POST', body: data, headers: { Accept: 'application/json' },
       });
       if (res.ok) setSubmitted(true);
-    } finally {
-      setSubmitting(false);
-    }
+    } finally { setSubmitting(false); }
   };
 
   return (
     <div style={{ fontFamily: 'inherit', background: '#FFFCF8', minHeight: '100vh', color: '#1C1C1C' }}>
 
-      {/* ══════════════════════════════
-          히어로
-      ══════════════════════════════ */}
+      {/* ══ 히어로 ══ */}
       <section style={{ background: '#FFF5EC', padding: '72px 24px 60px' }}>
         <div style={{ maxWidth: '540px', margin: '0 auto', textAlign: 'center' }}>
           <p style={{ color: '#FF6B35', fontWeight: 700, fontSize: '13px', letterSpacing: '0.06em', marginBottom: '18px' }}>
@@ -109,40 +54,30 @@ export default function App() {
           <h1 style={{ fontSize: 'clamp(26px, 6vw, 36px)', fontWeight: 800, lineHeight: 1.35, marginBottom: '16px' }}>
             아이한테 돈 이야기,<br />어떻게 꺼내세요?
           </h1>
-          {/* 경험자 훅 */}
           <p style={{
             fontSize: '15px', lineHeight: 1.8, color: '#7A4A2A',
-            background: '#FFE8D6', borderRadius: '12px',
-            padding: '14px 20px', marginBottom: '28px',
+            background: '#FFE8D6', borderRadius: '12px', padding: '14px 20px', marginBottom: '28px',
           }}>
-            20년 전 두 아이와 직접 해봤습니다.<br />
-            지금 돌아보니 <strong>전하고 싶은 것들이 생겼어요.</strong>
+            살아가면서 어떤 공부보다<br />
+            <strong>돈을 다루는 습관이 더 필요하더라고요.</strong>
           </p>
           <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#555', marginBottom: '36px' }}>
             어렵게 안 해도 돼요.<br />
             같은 고민 하는 동네 엄마들이랑<br />
             커피 한 잔 하며 얘기해봐요.
           </p>
-          <a
-            href="#apply"
-            style={{
-              display: 'inline-block', background: '#FF6B35', color: '#fff',
-              padding: '16px 36px', borderRadius: '14px', fontWeight: 700,
-              fontSize: '16px', textDecoration: 'none',
-              boxShadow: '0 4px 16px rgba(255,107,53,0.3)',
-            }}
-          >
+          <a href="#apply" style={{
+            display: 'inline-block', background: '#FF6B35', color: '#fff',
+            padding: '16px 36px', borderRadius: '14px', fontWeight: 700, fontSize: '16px',
+            textDecoration: 'none', boxShadow: '0 4px 16px rgba(255,107,53,0.3)',
+          }}>
             평택 첫 모임 신청하기
-            <span style={{ display: 'block', fontSize: '12px', fontWeight: 400, opacity: 0.85, marginTop: '3px' }}>
-              2~3명 소규모
-            </span>
+            <span style={{ display: 'block', fontSize: '12px', fontWeight: 400, opacity: 0.85, marginTop: '3px' }}>2~3명 소규모</span>
           </a>
         </div>
       </section>
 
-      {/* ══════════════════════════════
-          문제 공감
-      ══════════════════════════════ */}
+      {/* ══ 문제 공감 ══ */}
       <section style={{ padding: '64px 24px', background: '#fff' }}>
         <div style={{ maxWidth: '520px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '20px', fontWeight: 700, textAlign: 'center', marginBottom: '28px' }}>
@@ -163,15 +98,12 @@ export default function App() {
         </div>
       </section>
 
-      {/* ══════════════════════════════
-          엉클조 정체성 — 아이러니 3줄
-      ══════════════════════════════ */}
+      {/* ══ 엉클조 자격 — 어두운 배경 ══ */}
       <section style={{ padding: '64px 24px', background: '#1C1C1C', color: '#fff' }}>
         <div style={{ maxWidth: '560px', margin: '0 auto', textAlign: 'center' }}>
           <p style={{ color: '#FF8C5A', fontWeight: 700, fontSize: '13px', letterSpacing: '0.06em', marginBottom: '28px' }}>
             엉클조 (조경만)
           </p>
-          {/* 3개 스탯 */}
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: '16px', marginBottom: '36px' }}>
             {[
               { num: '연세대', label: '경제학과 졸업' },
@@ -179,98 +111,123 @@ export default function App() {
               { num: '20년', label: '금융교육 강사' },
             ].map((s, i) => (
               <div key={i} style={{ background: '#2C2C2C', borderRadius: '14px', padding: '20px 12px' }}>
-                <p style={{ fontSize: 'clamp(18px, 4vw, 24px)', fontWeight: 800, color: '#FF8C5A', marginBottom: '6px' }}>{s.num}</p>
+                <p style={{ fontSize: 'clamp(16px, 4vw, 22px)', fontWeight: 800, color: '#FF8C5A', marginBottom: '6px' }}>{s.num}</p>
                 <p style={{ fontSize: '12px', color: '#aaa', lineHeight: 1.5 }}>{s.label}</p>
               </div>
             ))}
           </div>
-          {/* 경험 한 줄 + 전하고 싶은 것 */}
           <div style={{ borderTop: '1px solid #333', paddingTop: '28px' }}>
-            <p style={{ fontSize: '18px', lineHeight: 1.8, color: '#ddd', marginBottom: '12px' }}>
-              두 아이와 <strong style={{ color: '#fff' }}>직접 해봤습니다.</strong><br />
-              잘 된 것도 있고, 지금 와서<br />
-              <strong style={{ color: '#FF8C5A' }}>더 잘해줄 수 있었던 것들도 보입니다.</strong>
+            <p style={{ fontSize: '17px', lineHeight: 1.85, color: '#ddd', marginBottom: '12px' }}>
+              두 아이와 직접 해봤습니다.<br />
+              <strong style={{ color: '#FF8C5A' }}>아이들이 다 크고 나서야 알았습니다.</strong>
             </p>
-            <p style={{ color: '#888', fontSize: '14px', lineHeight: 1.7 }}>
-              20년이 지나고 나서야 보이는 것들.<br />
-              그걸 지금의 엄마들께 전하고 싶습니다.
+            <p style={{ color: '#888', fontSize: '14px', lineHeight: 1.75 }}>
+              어릴 때 만들어준 돈 관리 습관이<br />성인이 된 지금까지 영향을 주고 있더라고요.
             </p>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════
-          실제 경험 — 은세미·형찬이
-      ══════════════════════════════ */}
+      {/* ══ 자녀 결과 — 겸손하게 ══ */}
       <section style={{ padding: '64px 24px', background: '#FFFCF8' }}>
         <div style={{ maxWidth: '580px', margin: '0 auto' }}>
-          <p style={{ color: '#FF6B35', fontWeight: 700, fontSize: '13px', letterSpacing: '0.06em', textAlign: 'center', marginBottom: '8px' }}>
-            엉클조가 직접 해봤습니다
+          <p style={{ color: '#999', fontSize: '13px', textAlign: 'center', marginBottom: '6px' }}>
+            자랑하려는 게 아닙니다.
           </p>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, textAlign: 'center', marginBottom: '32px' }}>
-            두 아이와 실제로 한 것들
+          <h2 style={{ fontSize: '20px', fontWeight: 700, textAlign: 'center', marginBottom: '8px' }}>
+            그냥 이렇게 됐더라고요.
           </h2>
+          <p style={{ color: '#888', fontSize: '14px', textAlign: 'center', marginBottom: '32px', lineHeight: 1.7 }}>
+            어릴 때 만든 습관 하나가<br />평생을 따라다니더라고요.
+          </p>
 
-          {/* 은세미 카드 */}
-          <div style={{ ...card, marginBottom: '16px' }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <span style={{ fontSize: '24px' }}>👧</span>
+          {/* 형찬이 */}
+          <div style={{
+            background: '#fff', border: '1.5px solid #FFE4CC', borderRadius: '16px',
+            padding: '24px', marginBottom: '16px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
+              <span style={{ fontSize: '28px', flexShrink: 0 }}>👦</span>
               <div>
-                <p style={{ fontWeight: 700, fontSize: '16px' }}>딸 은세미 (초등 3학년 때 시작)</p>
-                <p style={{ fontSize: '13px', color: '#999' }}>용돈기입장 → 적금 → 주식</p>
-              </div>
-            </div>
-            <div style={{ display: 'flex', flexDirection: 'column', gap: '10px' }}>
-              {[
-                { step: '1단계', text: '주 1,500원 용돈 + 용돈기입장. 몇 달 후 확인해보니 1만원 중 9,000원이 군것질이었습니다. 아무 말 안 했습니다. 스스로 보게만 했어요.' },
-                { step: '2단계', text: '100% 매칭 적금 제안. 은세미가 5,000원씩 넣겠다고 했습니다. 1년 후 명절 용돈까지 더해 9만원이 넘었습니다.' },
-                { step: '3단계', text: '"아는 회사 말해봐." 하나로통신, 기업은행. 주주총회 소집장이 오자 신이 났습니다.' },
-              ].map((s, i) => (
-                <div key={i} style={{ display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
-                  <span style={{
-                    background: '#FFE4CC', color: '#C0440A', fontSize: '11px',
-                    fontWeight: 700, padding: '3px 8px', borderRadius: '20px',
-                    flexShrink: 0, marginTop: '2px',
-                  }}>{s.step}</span>
-                  <p style={{ fontSize: '14px', lineHeight: 1.7, color: '#444' }}>{s.text}</p>
-                </div>
-              ))}
-            </div>
-          </div>
-
-          {/* 형찬이 카드 */}
-          <div style={{ ...card }}>
-            <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '16px' }}>
-              <span style={{ fontSize: '24px' }}>👦</span>
-              <div>
-                <p style={{ fontWeight: 700, fontSize: '16px' }}>아들 형찬이 (누나보다 3살 아래)</p>
-                <p style={{ fontSize: '13px', color: '#999' }}>13만원 → 주식 → 5년 후 400%</p>
+                <p style={{ fontWeight: 700, fontSize: '16px', marginBottom: '4px' }}>아들 형찬이</p>
+                <p style={{ fontSize: '13px', color: '#999' }}>초등학교 때 현대자동차 주식을 샀습니다</p>
               </div>
             </div>
             <p style={{ fontSize: '14px', lineHeight: 1.8, color: '#444', marginBottom: '16px' }}>
-              누나보다 더 적극적으로 모아 13만원 목돈을 만들었습니다.<br />
-              현대자동차, SK 주식을 샀습니다. 아는 회사라 직접 골랐습니다.
+              "아는 회사 말해봐" 했더니 현대자동차를 골랐습니다.<br />
+              주주가 되니 뉴스를 찾아보고, 회사를 공부했습니다.<br />
+              그 아이가 지금 <strong>현대자동차에서 일하고 있습니다.</strong>
             </p>
-            {/* 결과 강조 */}
             <div style={{
-              background: '#FFF5EC', border: '1.5px solid #FFD4B0',
-              borderRadius: '12px', padding: '16px', textAlign: 'center',
+              background: '#FFF5EC', border: '1px solid #FFD4B0', borderRadius: '10px',
+              padding: '12px 16px', fontSize: '13px', color: '#666', lineHeight: 1.7,
             }}>
-              <p style={{ fontSize: '13px', color: '#888', marginBottom: '4px' }}>5년 후 결과</p>
-              <p style={{ fontSize: '28px', fontWeight: 800, color: '#FF6B35' }}>+400%</p>
-              <p style={{ fontSize: '13px', color: '#666', marginTop: '4px' }}>
-                "겨울 지나면 기름 덜 팔리고, 여름엔 음료수가 많이 팔릴 것 같아요."<br />
-                <span style={{ color: '#999' }}>— 형찬이의 투자 논리</span>
-              </p>
+              "좋아하는 회사 주주가 되니까 저절로 공부하게 됐어요."
+            </div>
+          </div>
+
+          {/* 은세미 */}
+          <div style={{
+            background: '#fff', border: '1.5px solid #FFE4CC', borderRadius: '16px', padding: '24px',
+          }}>
+            <div style={{ display: 'flex', alignItems: 'flex-start', gap: '14px', marginBottom: '16px' }}>
+              <span style={{ fontSize: '28px', flexShrink: 0 }}>👧</span>
+              <div>
+                <p style={{ fontWeight: 700, fontSize: '16px', marginBottom: '4px' }}>딸 은세미</p>
+                <p style={{ fontSize: '13px', color: '#999' }}>초등학교 때부터 용돈 기입장·적금을 했습니다</p>
+              </div>
+            </div>
+            <p style={{ fontSize: '14px', lineHeight: 1.8, color: '#444', marginBottom: '16px' }}>
+              용돈을 스스로 관리하면서 자립심이 생겼습니다.<br />
+              크고 나서 스스로 중국 유학을 결정했고,<br />
+              <strong>칭화대에 진학했습니다.</strong>
+            </p>
+            <div style={{
+              background: '#FFF5EC', border: '1px solid #FFD4B0', borderRadius: '10px',
+              padding: '12px 16px', fontSize: '13px', color: '#666', lineHeight: 1.7,
+            }}>
+              어릴 때 자기 돈을 스스로 다뤄본 경험이<br />나중에 큰 결정을 스스로 하는 힘이 됐습니다.
             </div>
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════
-          경제공부 방법
-      ══════════════════════════════ */}
+      {/* ══ 핵심 인사이트 — 혼자였다 ══ */}
       <section style={{ padding: '64px 24px', background: '#fff' }}>
+        <div style={{ maxWidth: '520px', margin: '0 auto' }}>
+          {/* 구분선 강조 */}
+          <div style={{
+            borderLeft: '4px solid #FF6B35', paddingLeft: '24px', marginBottom: '36px',
+          }}>
+            <p style={{ fontSize: '18px', fontWeight: 700, lineHeight: 1.8, marginBottom: '12px' }}>
+              그때는 주변에<br />이런 걸 가르쳐 주는 사람이 없었습니다.
+            </p>
+            <p style={{ fontSize: '15px', color: '#555', lineHeight: 1.8 }}>
+              나도 혼자 해봤어요.<br />
+              잘 된 것도 있고, 지금 와서 아쉬운 것도 있습니다.
+            </p>
+          </div>
+
+          {/* 모임의 이유 */}
+          <div style={{
+            background: '#FFF5EC', borderRadius: '16px', padding: '28px 24px',
+          }}>
+            <p style={{ fontSize: '16px', fontWeight: 700, marginBottom: '12px', lineHeight: 1.7 }}>
+              요즘 엄마들은 더 지혜롭습니다.
+            </p>
+            <p style={{ fontSize: '15px', color: '#444', lineHeight: 1.85 }}>
+              서로 힘을 합치면 더 좋은 방법이 나올 거라 생각합니다.<br />
+              우리 아이들에게 좋은 경험과 가치, 습관을 줄 수 있지 않을까요?
+            </p>
+            <p style={{ fontSize: '14px', color: '#888', marginTop: '16px' }}>
+              — 손주 볼 나이가 된 엉클조가 이 모임을 여는 이유입니다.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      {/* ══ 경제공부 방법 ══ */}
+      <section style={{ padding: '64px 24px', background: '#FFFCF8' }}>
         <div style={{ maxWidth: '620px', margin: '0 auto' }}>
           <h2 style={{ fontSize: '20px', fontWeight: 700, textAlign: 'center', marginBottom: '6px' }}>
             가정에서 해볼 수 있는 방법들
@@ -281,8 +238,8 @@ export default function App() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(260px, 1fr))', gap: '16px' }}>
             {METHODS.map((m, i) => (
               <div key={i} style={{
-                background: '#FFFCF8', border: '1.5px solid #FFE4CC',
-                borderRadius: '16px', padding: '22px 20px', position: 'relative',
+                background: '#fff', border: '1.5px solid #FFE4CC', borderRadius: '16px',
+                padding: '22px 20px', position: 'relative',
               }}>
                 {m.did && (
                   <span style={{
@@ -292,28 +249,22 @@ export default function App() {
                   }}>직접 했습니다</span>
                 )}
                 <div style={{ fontSize: '26px', marginBottom: '10px' }}>{m.icon}</div>
-                <h3 style={{ fontWeight: 700, fontSize: '15px', marginBottom: '8px', paddingRight: m.did ? '60px' : '0' }}>{m.title}</h3>
+                <h3 style={{ fontWeight: 700, fontSize: '15px', marginBottom: '8px', paddingRight: m.did ? '64px' : '0' }}>{m.title}</h3>
                 <p style={{ fontSize: '13px', lineHeight: 1.7, color: '#555', marginBottom: '14px' }}>{m.desc}</p>
                 <span style={{
                   display: 'inline-block', background: '#FFE4CC', color: '#C0440A',
                   fontSize: '12px', fontWeight: 600, padding: '4px 12px', borderRadius: '20px',
-                }}>
-                  {m.age}
-                </span>
+                }}>{m.age}</span>
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      {/* ══════════════════════════════
-          모임 안내
-      ══════════════════════════════ */}
+      {/* ══ 모임 안내 ══ */}
       <section style={{ padding: '64px 24px', background: '#FFF5EC' }}>
         <div style={{ maxWidth: '520px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>
-            이런 분들이랑 이야기하고 싶어요
-          </h2>
+          <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>이런 분들이랑 이야기하고 싶어요</h2>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '44px' }}>
             {WHO.map((item, i) => (
               <li key={i} style={{ display: 'flex', gap: '10px', fontSize: '15px', lineHeight: 1.65 }}>
@@ -322,9 +273,7 @@ export default function App() {
               </li>
             ))}
           </ul>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>
-            첫 모임은 이렇게 합니다
-          </h2>
+          <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>첫 모임은 이렇게 합니다</h2>
           <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
             {HOW.map((item, i) => (
               <li key={i} style={{ display: 'flex', gap: '10px', fontSize: '15px', lineHeight: 1.65, color: '#444' }}>
@@ -336,17 +285,11 @@ export default function App() {
         </div>
       </section>
 
-      {/* ══════════════════════════════
-          신청 폼
-      ══════════════════════════════ */}
+      {/* ══ 신청 폼 ══ */}
       <section id="apply" style={{ padding: '64px 24px', background: '#fff' }}>
         <div style={{ maxWidth: '480px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '22px', fontWeight: 700, textAlign: 'center', marginBottom: '6px' }}>
-            부담 없이 신청해주세요.
-          </h2>
-          <p style={{ color: '#999', textAlign: 'center', fontSize: '15px', marginBottom: '36px' }}>
-            2~3명이어도 엽니다.
-          </p>
+          <h2 style={{ fontSize: '22px', fontWeight: 700, textAlign: 'center', marginBottom: '6px' }}>부담 없이 신청해주세요.</h2>
+          <p style={{ color: '#999', textAlign: 'center', fontSize: '15px', marginBottom: '36px' }}>2~3명이어도 엽니다.</p>
 
           {submitted ? (
             <div style={{
@@ -374,19 +317,16 @@ export default function App() {
                     id={field.name} name={field.name} type={field.type} required placeholder={field.placeholder}
                     style={{ width: '100%', padding: '13px 16px', border: '1.5px solid #E5E5E5', borderRadius: '10px', fontSize: '15px', outline: 'none', transition: 'border-color 0.2s' }}
                     onFocus={(e) => (e.currentTarget.style.borderColor = '#FF6B35')}
-                    onBlur={(e) => (e.currentTarget.style.borderColor = '#E5E5E5')}
+                    onBlur={(e)  => (e.currentTarget.style.borderColor = '#E5E5E5')}
                   />
                 </div>
               ))}
-              <button
-                type="submit" disabled={submitting}
-                style={{
-                  background: submitting ? '#ccc' : '#FF6B35', color: '#fff', border: 'none',
-                  padding: '17px', borderRadius: '12px', fontSize: '17px', fontWeight: 700,
-                  cursor: submitting ? 'not-allowed' : 'pointer', marginTop: '8px',
-                  boxShadow: submitting ? 'none' : '0 4px 16px rgba(255,107,53,0.3)',
-                }}
-              >
+              <button type="submit" disabled={submitting} style={{
+                background: submitting ? '#ccc' : '#FF6B35', color: '#fff', border: 'none',
+                padding: '17px', borderRadius: '12px', fontSize: '17px', fontWeight: 700,
+                cursor: submitting ? 'not-allowed' : 'pointer', marginTop: '8px',
+                boxShadow: submitting ? 'none' : '0 4px 16px rgba(255,107,53,0.3)',
+              }}>
                 {submitting ? '신청 중...' : '함께하기'}
               </button>
             </form>
@@ -394,18 +334,15 @@ export default function App() {
         </div>
       </section>
 
-      {/* ══════════════════════════════
-          푸터 — 엉클조 소개
-      ══════════════════════════════ */}
+      {/* ══ 푸터 ══ */}
       <footer style={{ padding: '52px 24px', background: '#1C1C1C', color: '#bbb' }}>
         <div style={{ maxWidth: '520px', margin: '0 auto' }}>
           <p style={{ lineHeight: 1.85, fontSize: '15px', marginBottom: '20px' }}>
             경제학 공부를 했고, 금융기관에서 10년 일했습니다.<br />
             그다음 20년은 아이들한테 금융 교육을 해왔어요.<br />
             <br />
-            두 아이와 직접 해봤습니다.<br />
-            20년이 지나고 보니, 그때 더 잘해줄 수 있었던 것들이 보이더라고요.<br />
-            그걸 지금의 엄마들께 나눠드리고 싶습니다.
+            두 아이와 직접 해봤고, 지금은 손주 볼 나이가 됐습니다.<br />
+            돌아보니 나눠드리고 싶은 것들이 생겼습니다.
           </p>
           <p style={{ color: '#666', fontSize: '14px' }}>— 엉클조 (조경만)</p>
         </div>
