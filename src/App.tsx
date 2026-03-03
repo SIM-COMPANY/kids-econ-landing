@@ -339,9 +339,10 @@ export default function App() {
         <div style={{ maxWidth: '520px', margin: '0 auto' }}>
           <p style={{ lineHeight: 1.85, fontSize: '15px', marginBottom: '20px' }}>
             경제학 공부를 했고, 금융기관에서 10년 일했습니다.<br />
-            그다음 20년은 아이들한테 금융 교육을 해왔어요.<br />
+            그다음 20년은 수많은 분들께 돈과 생애설계, 행복을 주제로 이야기했습니다.<br />
             <br />
-            두 아이와 직접 해봤고, 지금은 손주 볼 나이가 됐습니다.<br />
+            그러면서 제 두 아이 경제교육도 직접 해봤어요.<br />
+            지금은 손주 볼 나이가 됐고,<br />
             돌아보니 나눠드리고 싶은 것들이 생겼습니다.
           </p>
           <p style={{ color: '#666', fontSize: '14px' }}>— 엉클조 (조경만)</p>
