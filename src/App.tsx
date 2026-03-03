@@ -1,8 +1,7 @@
 import { useState } from 'react';
 import type { FormEvent } from 'react';
 
-// TODO: Formspree에서 새 폼 생성 후 ID 교체 (https://formspree.io)
-const FORMSPREE_ID = 'YOUR_FORMSPREE_ID';
+const FORMSPREE_ID = 'meelbwyv';
 
 const METHODS = [
   {
