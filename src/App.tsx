@@ -46,15 +46,15 @@ export default function App() {
     <div style={{ fontFamily: 'inherit', background: '#FFFCF8', minHeight: '100vh', color: '#1C1C1C' }}>
 
       {/* ══ 히어로 ══ */}
-      <section style={{ background: '#FFF5EC', padding: '72px 24px 60px' }}>
+      <section style={{ background: 'linear-gradient(160deg, #FFD9B3 0%, #FFF5EC 60%)', padding: '72px 24px 60px' }}>
         <div style={{ maxWidth: '540px', margin: '0 auto', textAlign: 'center' }}>
-          <p style={{ color: '#FF6B35', fontWeight: 700, fontSize: '13px', letterSpacing: '0.06em', marginBottom: '18px' }}>
+          <p style={{ color: '#C0440A', fontWeight: 700, fontSize: '13px', letterSpacing: '0.06em', marginBottom: '18px' }}>
             엉클조 × 자녀경제교육 소모임 · 평택
           </p>
-          <h1 style={{ fontSize: 'clamp(26px, 6vw, 36px)', fontWeight: 800, lineHeight: 1.35, marginBottom: '24px' }}>
+          <h1 style={{ fontSize: 'clamp(28px, 6vw, 38px)', fontWeight: 900, lineHeight: 1.3, marginBottom: '24px', color: '#1C1C1C' }}>
             아이한테 돈 이야기,<br />어떻게 꺼내세요?
           </h1>
-          <p style={{ fontSize: '15px', lineHeight: 1.75, color: '#555', marginBottom: '36px' }}>
+          <p style={{ fontSize: '16px', lineHeight: 1.8, color: '#4A3020', marginBottom: '36px' }}>
             어렵게 안 해도 돼요.<br />
             같은 고민 하는 동네 엄마들이랑<br />
             커피 한 잔 하며 얘기해봐요.
@@ -285,26 +285,39 @@ export default function App() {
       </section>
 
       {/* ══ 모임 안내 ══ */}
-      <section style={{ padding: '64px 24px', background: '#FFF5EC' }}>
-        <div style={{ maxWidth: '520px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '20px' }}>이런 분들이랑 이야기하고 싶어요</h2>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '44px' }}>
-            {WHO.map((item, i) => (
-              <li key={i} style={{ display: 'flex', gap: '10px', fontSize: '15px', lineHeight: 1.65 }}>
-                <span style={{ color: '#FF6B35', fontWeight: 700, flexShrink: 0 }}>✓</span>
-                <span>{item}</span>
-              </li>
-            ))}
-          </ul>
-          <h2 style={{ fontSize: '20px', fontWeight: 700, marginBottom: '16px' }}>첫 모임은 이렇게 합니다</h2>
-          <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '10px' }}>
-            {HOW.map((item, i) => (
-              <li key={i} style={{ display: 'flex', gap: '10px', fontSize: '15px', lineHeight: 1.65, color: '#444' }}>
-                <span style={{ color: '#FF6B35', flexShrink: 0 }}>·</span>
-                <span style={{ fontWeight: item === '강의 아닙니다' ? 700 : 400 }}>{item}</span>
-              </li>
-            ))}
-          </ul>
+      <section style={{ padding: '64px 24px', background: '#FFFCF8' }}>
+        <div style={{ maxWidth: '520px', margin: '0 auto', display: 'flex', flexDirection: 'column', gap: '20px' }}>
+
+          {/* 대상 카드 */}
+          <div style={{ background: '#fff', border: '1.5px solid #FFE4CC', borderRadius: '16px', padding: '28px 24px' }}>
+            <h2 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '20px', color: '#1C1C1C' }}>
+              이런 분들이랑 이야기하고 싶어요
+            </h2>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '14px' }}>
+              {WHO.map((item, i) => (
+                <li key={i} style={{ display: 'flex', gap: '10px', fontSize: '15px', lineHeight: 1.65 }}>
+                  <span style={{ color: '#FF6B35', fontWeight: 700, flexShrink: 0 }}>✓</span>
+                  <span>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
+          {/* 방식 카드 */}
+          <div style={{ background: '#1C1C1C', borderRadius: '16px', padding: '28px 24px' }}>
+            <h2 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '20px', color: '#fff' }}>
+              첫 모임은 이렇게 합니다
+            </h2>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+              {HOW.map((item, i) => (
+                <li key={i} style={{ display: 'flex', gap: '12px', fontSize: '15px', lineHeight: 1.65, color: item === '강의 아닙니다' ? '#FF8C5A' : '#ccc' }}>
+                  <span style={{ color: '#FF6B35', flexShrink: 0 }}>·</span>
+                  <span style={{ fontWeight: item === '강의 아닙니다' ? 700 : 400 }}>{item}</span>
+                </li>
+              ))}
+            </ul>
+          </div>
+
         </div>
       </section>
 
