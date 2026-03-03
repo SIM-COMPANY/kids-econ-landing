@@ -246,7 +246,7 @@ export default function App() {
             <h2 style={{ fontSize: '18px', fontWeight: 700, marginBottom: '20px', color: '#fff', letterSpacing: '-0.02em' }}>
               첫 모임은 이렇게 합니다
             </h2>
-            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px' }}>
+            <ul style={{ listStyle: 'none', display: 'flex', flexDirection: 'column', gap: '12px', marginBottom: '24px' }}>
               {HOW.map((item, i) => (
                 <li key={i} style={{ display: 'flex', gap: '12px', fontSize: '15px', lineHeight: 1.65, letterSpacing: '-0.01em', color: item === '강의 아닙니다' ? C.primary : '#ccc' }}>
                   <span style={{ color: C.primary, flexShrink: 0 }}>·</span>
@@ -254,6 +254,16 @@ export default function App() {
                 </li>
               ))}
             </ul>
+            <div style={{ borderTop: '1px solid #333', paddingTop: '20px', display: 'flex', gap: '12px', alignItems: 'flex-start' }}>
+              <span style={{ fontSize: '22px', flexShrink: 0 }}>🎁</span>
+              <div>
+                <p style={{ fontSize: '13px', color: C.primary, fontWeight: 700, marginBottom: '4px', letterSpacing: '-0.01em' }}>참여하시는 분께 드립니다</p>
+                <p style={{ fontSize: '14px', color: '#ddd', lineHeight: 1.7, letterSpacing: '-0.01em' }}>
+                  《효진 선생님의 초등 돈 공부》<br />
+                  <span style={{ fontSize: '12px', color: '#888' }}>용돈 관리부터 주식 투자까지, 집에서 시작하는 우리 아이 첫 경제 교육</span>
+                </p>
+              </div>
+            </div>
           </div>
         </div>
       </section>
