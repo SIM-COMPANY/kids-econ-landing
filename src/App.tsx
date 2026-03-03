@@ -170,12 +170,12 @@ export default function App() {
           <div style={{
             background: C.surface, borderRadius: '20px', padding: '28px 24px',
           }}>
-            <p style={{ fontSize: '17px', fontWeight: 700, lineHeight: 1.7, letterSpacing: '-0.02em', marginBottom: '10px' }}>
-              주체적으로 사고하고,<br />정서적으로 건강한 어른.
+            <p style={{ fontSize: '17px', fontWeight: 700, lineHeight: 1.75, letterSpacing: '-0.02em', marginBottom: '10px' }}>
+              우리 아이도 주체적으로 사고하고,<br />정서적으로 건강한 어른이 되길<br />원하지 않으세요?
             </p>
             <p style={{ fontSize: '15px', color: C.textSub, lineHeight: 1.85, letterSpacing: '-0.01em' }}>
-              그게 제가 경제교육을 통해 바란 것이었는데,<br />
-              지금 돌아보니 그렇게 됐더라고요.
+              저는 그게 경제교육이 줄 수 있는<br />
+              가장 큰 선물이라고 생각합니다.
             </p>
           </div>
         </div>
