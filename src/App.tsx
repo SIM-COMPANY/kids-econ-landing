@@ -19,14 +19,6 @@ const C = {
   orange20:  '#FFD9B3',
 };
 
-const METHODS = [
-  { icon: '💰', title: '주간 용돈 (간섭 없이)',  desc: '뭐에 쓰든 안 물어봤습니다. 간섭 안 하는 게 핵심이었습니다.', age: '초등 저학년~', did: true  },
-  { icon: '📒', title: '용돈 기입장',            desc: '잘 쓰면 상금 줬습니다. 몇 달 지나면 스스로 "이거 왜 샀지?"가 나옵니다.', age: '초등 저학년~', did: true  },
-  { icon: '🏦', title: '100% 매칭 적금',         desc: '아이가 넣으면 아빠도 똑같이. 목표가 생기면 아끼는 이유가 생깁니다.', age: '초등 중학년~', did: true  },
-  { icon: '📈', title: '주식 첫 경험',           desc: '아이가 아는 회사로 시작합니다. 뉴스가 달라 보이기 시작합니다.', age: '초등 고학년~', did: true  },
-  { icon: '⚖️', title: '기회비용 교육',          desc: '선택하면 나머지는 포기. 그게 기회비용이더라고요.',            age: '전 연령',    did: false },
-  { icon: '🛒', title: '시장 경험',              desc: '마트 말고 재래시장. 살아있는 경제가 거기 있더라고요.',         age: '초등 전~',   did: false },
-];
 
 const PROBLEMS = [
   '용돈을 줘야 할 것 같은데, 얼마를 어떻게 줘야 할지',
@@ -258,44 +250,6 @@ export default function App() {
         }}>
           신청하러 가기 →
         </a>
-      </section>
-
-      {/* ══ 경제공부 방법 ══ */}
-      <section style={{ padding: '72px 24px', background: C.bg }}>
-        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: '22px', fontWeight: 700, textAlign: 'center', marginBottom: '6px', letterSpacing: '-0.02em' }}>
-            가정에서 해볼 수 있는 방법들
-          </h2>
-          <p style={{ color: C.textMuted, textAlign: 'center', fontSize: '14px', marginBottom: '36px', letterSpacing: '-0.01em' }}>
-            제가 해봤거나, 해봤으면 좋았을 것들입니다
-          </p>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(270px, 1fr))', gap: '14px' }}>
-            {METHODS.map((m, i) => (
-              <div key={i} style={{
-                background: C.bg, border: `1px solid ${C.border}`, borderRadius: '18px',
-                padding: '22px 20px', position: 'relative',
-                boxShadow: '0 2px 8px rgba(0,0,0,0.05)',
-              }}>
-                {m.did && (
-                  <span style={{
-                    position: 'absolute', top: '16px', right: '16px',
-                    background: C.primary, color: '#fff',
-                    fontSize: '11px', fontWeight: 700, padding: '4px 10px', borderRadius: '100px',
-                    letterSpacing: '-0.01em',
-                  }}>직접 했습니다</span>
-                )}
-                <div style={{ fontSize: '28px', marginBottom: '12px' }}>{m.icon}</div>
-                <h3 style={{ fontWeight: 700, fontSize: '15px', marginBottom: '8px', paddingRight: m.did ? '72px' : '0', letterSpacing: '-0.02em' }}>{m.title}</h3>
-                <p style={{ fontSize: '13px', lineHeight: 1.75, color: C.textSub, marginBottom: '16px', letterSpacing: '-0.01em' }}>{m.desc}</p>
-                <span style={{
-                  display: 'inline-block', background: C.orange10, color: C.primaryDk,
-                  fontSize: '12px', fontWeight: 600, padding: '5px 12px', borderRadius: '100px',
-                  letterSpacing: '-0.01em',
-                }}>{m.age}</span>
-              </div>
-            ))}
-          </div>
-        </div>
       </section>
 
       {/* ══ 모임 안내 ══ */}
