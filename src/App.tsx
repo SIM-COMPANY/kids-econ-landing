@@ -153,12 +153,6 @@ export default function App() {
       {/* ══ 자녀 결과 ══ */}
       <section style={{ padding: '72px 24px', background: C.bg }}>
         <div style={{ maxWidth: '580px', margin: '0 auto' }}>
-          <p style={{ color: C.textMuted, fontSize: '13px', textAlign: 'center', marginBottom: '6px', letterSpacing: '-0.01em' }}>
-            자랑하려는 게 아닙니다.
-          </p>
-          <h2 style={{ fontSize: '22px', fontWeight: 700, textAlign: 'center', marginBottom: '8px', letterSpacing: '-0.02em' }}>
-            그냥 이렇게 됐더라고요.
-          </h2>
           <p style={{ color: C.textMuted, fontSize: '14px', textAlign: 'center', marginBottom: '36px', lineHeight: 1.7, letterSpacing: '-0.01em' }}>
             어릴 때 만든 습관 하나가 평생을 따라다니더라고요.
           </p>
