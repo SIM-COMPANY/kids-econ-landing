@@ -101,6 +101,15 @@ export default function App() {
       {/* ══ 엉클조 자격 — 어두운 배경 ══ */}
       <section style={{ padding: '64px 24px', background: '#1C1C1C', color: '#fff' }}>
         <div style={{ maxWidth: '560px', margin: '0 auto', textAlign: 'center' }}>
+          <img
+            src="/uncle-jo.png"
+            alt="엉클조 조경만"
+            style={{
+              width: '96px', height: '96px', borderRadius: '50%',
+              objectFit: 'cover', marginBottom: '16px',
+              border: '3px solid #FF8C5A',
+            }}
+          />
           <p style={{ color: '#FF8C5A', fontWeight: 700, fontSize: '13px', letterSpacing: '0.06em', marginBottom: '28px' }}>
             엉클조 (조경만)
           </p>
