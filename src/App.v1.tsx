@@ -49,19 +49,12 @@ const PROBLEMS = [
 ];
 
 const WHO = [
-  '아이 경제교육, 관심은 있는데 어디서 시작할지 모르는 분',
-  '정답 듣기보다 같이 고민하고 싶은 분',
-  '혼자 하기 막막해서 비슷한 고민하는 엄마 만나고 싶은 분',
+  '아이 경제교육에 관심은 있는데 어디서 시작할지 모르는 분',
+  '정답 듣기보다 같이 고민할 분',
   '평택·경기남부 근처에 사시는 분',
 ];
 
 const HOW = ['2~3명, 카페에서 1시간 반', '엉클조가 먼저 경험 나눕니다', '나머지는 같이 이야기합니다', '강의 아닙니다'];
-
-const AFTER = [
-  { icon: '💬', text: '아이에게 "경제" 대신 꺼낼 첫 마디를 정하게 됩니다' },
-  { icon: '📝', text: '우리 집만의 용돈 원칙 초안이 손에 쥐어집니다' },
-  { icon: '🤝', text: '혼자 고민하지 않아도 되는 든든한 지인이 생깁니다' },
-];
 
 export default function App() {
   const [submitted, setSubmitted] = useState(false);
@@ -101,12 +94,13 @@ export default function App() {
               엉클조 × 자녀경제교육 소모임 · 평택
             </p>
           </div>
-          <h1 style={{ fontSize: T.display, fontWeight: 900, lineHeight: 1.3, marginBottom: S.md, letterSpacing: '-0.03em', color: C.dark }}>
-            저도 제 아이들 가르칠 때<br />참 막막했습니다.
+          <h1 style={{ fontSize: T.display, fontWeight: 900, lineHeight: 1.25, marginBottom: S.md, letterSpacing: '-0.03em', color: C.dark }}>
+            아이한테 돈 이야기,<br />어떻게 꺼내세요?
           </h1>
-          <p style={{ fontSize: T.body, lineHeight: 1.9, color: C.textSub, marginBottom: S.xl, letterSpacing: '-0.01em' }}>
-            20년 금융 전문가도 어려웠던 자녀 경제교육.<br />
-            정답 대신, 같이 고민할 동료를 찾습니다.
+          <p style={{ fontSize: T.body, lineHeight: 1.8, color: C.textSub, marginBottom: S.xl, letterSpacing: '-0.01em' }}>
+            어렵게 안 해도 돼요.<br />
+            같은 고민 하는 동네 엄마들이랑<br />
+            커피 한 잔 하며 얘기해봐요.
           </p>
           <a href="#apply" style={{
             display: 'inline-block', background: C.primary, color: '#fff',
@@ -114,42 +108,14 @@ export default function App() {
             textDecoration: 'none', letterSpacing: '-0.01em',
             boxShadow: `0 6px 20px rgba(255,111,15,0.35)`,
           }}>
-            첫 번째 멤버 되기
-            <span style={{ display: 'block', fontSize: T.caption, fontWeight: 400, opacity: 0.85, marginTop: '3px' }}>평택 · 2~3명 소규모</span>
+            평택 첫 모임 신청하기
+            <span style={{ display: 'block', fontSize: T.caption, fontWeight: 400, opacity: 0.85, marginTop: '3px' }}>2~3명 소규모</span>
           </a>
         </div>
       </section>
 
-      {/* ══ 파운딩 멤버 선언 (v2) ══ */}
-      <section style={{ padding: `${S.section} ${S.md}`, background: C.surface }}>
-        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-          <p style={{ color: C.primary, fontWeight: 700, fontSize: T.small, letterSpacing: '0.06em', marginBottom: S.sm }}>
-            이 모임은 어떤 모임인가요?
-          </p>
-          <h2 style={{ fontSize: T.h2, fontWeight: 800, lineHeight: 1.6, marginBottom: S.md, letterSpacing: '-0.02em' }}>
-            평택 엄마들과 함께<br />이 모임을 완성하고 싶습니다.
-          </h2>
-          <p style={{ fontSize: T.body, color: C.textSub, lineHeight: 1.9, marginBottom: S.lg, letterSpacing: '-0.01em' }}>
-            첫 모임인 만큼 정해진 커리큘럼은 없습니다.<br />
-            여러분의 고민을 먼저 듣고,<br />
-            엉클조의 경험을 버무려<br />
-            우리 아이를 위한 진짜 경제 공부를 같이 설계합니다.
-          </p>
-          <div style={{
-            background: C.bg, border: `1.5px solid ${C.primary}`, borderRadius: '16px',
-            padding: `${S.sm} ${S.md}`, display: 'flex', alignItems: 'center', gap: S.sm,
-          }}>
-            <span style={{ fontSize: '22px', flexShrink: 0 }}>💡</span>
-            <p style={{ fontSize: T.body, color: C.dark, lineHeight: 1.7, letterSpacing: '-0.01em' }}>
-              <strong>정답을 드리러 가는 게 아닙니다.</strong><br />
-              같이 찾으러 갑니다.
-            </p>
-          </div>
-        </div>
-      </section>
-
       {/* ══ 문제 공감 ══ */}
-      <section style={{ padding: `${S.section} ${S.md}`, background: C.bg }}>
+      <section style={{ padding: `${S.section} ${S.md}`, background: C.surface }}>
         <div style={{ maxWidth: '640px', margin: '0 auto' }}>
           <h2 style={{ fontSize: T.h2, fontWeight: 700, textAlign: 'center', marginBottom: S.lg, letterSpacing: '-0.02em' }}>
             이런 고민 하고 있지 않으세요?
@@ -277,39 +243,13 @@ export default function App() {
         </div>
       </section>
 
-      {/* ══ 모임이 끝나면 (v2) ══ */}
-      <section style={{ padding: `${S.section} ${S.md}`, background: C.bg }}>
-        <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: T.h2, fontWeight: 800, marginBottom: S.xs, letterSpacing: '-0.02em' }}>
-            모임이 끝나고 집에 갈 때
-          </h2>
-          <p style={{ fontSize: T.body, color: C.textMuted, marginBottom: S.lg, letterSpacing: '-0.01em' }}>
-            이것만큼은 손에 쥐고 가게 됩니다.
-          </p>
-          <div style={{ display: 'flex', flexDirection: 'column', gap: S.sm }}>
-            {AFTER.map((item, i) => (
-              <div key={i} style={{
-                display: 'flex', gap: S.md, alignItems: 'flex-start',
-                padding: S.md, background: C.surface,
-                borderRadius: '16px', border: `1px solid ${C.border}`,
-              }}>
-                <span style={{ fontSize: '28px', flexShrink: 0 }}>{item.icon}</span>
-                <p style={{ fontSize: T.body, color: C.textSub, lineHeight: 1.7, letterSpacing: '-0.01em', marginTop: '4px' }}>
-                  {item.text}
-                </p>
-              </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* ══ 중간 CTA ══ */}
+      {/* ══ 중간 CTA — 오렌지 풀 섹션 ══ */}
       <section style={{ padding: `56px ${S.md}`, background: C.primary, textAlign: 'center' }}>
         <p style={{ fontSize: T.h2, fontWeight: 800, color: '#fff', marginBottom: S.xs, letterSpacing: '-0.03em', lineHeight: 1.4 }}>
-          같이 만들어봐요
+          이야기 나눠보고 싶어졌다면
         </p>
         <p style={{ fontSize: T.body, color: 'rgba(255,255,255,0.8)', marginBottom: S.lg, letterSpacing: '-0.01em' }}>
-          2~3명이어도 시작합니다.
+          2~3명이어도 엽니다.
         </p>
         <a href="#apply" style={{
           display: 'inline-block', background: '#fff', color: C.primary,
@@ -317,7 +257,7 @@ export default function App() {
           fontWeight: 700, fontSize: T.body, textDecoration: 'none', letterSpacing: '-0.01em',
           boxShadow: '0 4px 16px rgba(0,0,0,0.15)',
         }}>
-          첫 번째 멤버 되기 →
+          신청하러 가기 →
         </a>
       </section>
 
@@ -366,8 +306,8 @@ export default function App() {
       {/* ══ 신청 폼 ══ */}
       <section id="apply" style={{ padding: `${S.section} ${S.md}`, background: C.bg }}>
         <div style={{ maxWidth: '640px', margin: '0 auto' }}>
-          <h2 style={{ fontSize: T.h2, fontWeight: 700, textAlign: 'center', marginBottom: S.xs, letterSpacing: '-0.03em' }}>첫 번째 멤버가 되어주세요.</h2>
-          <p style={{ color: C.textMuted, textAlign: 'center', fontSize: T.body, marginBottom: S.xl, letterSpacing: '-0.01em' }}>2~3명이어도 시작합니다.</p>
+          <h2 style={{ fontSize: T.h2, fontWeight: 700, textAlign: 'center', marginBottom: S.xs, letterSpacing: '-0.03em' }}>부담 없이 신청해주세요.</h2>
+          <p style={{ color: C.textMuted, textAlign: 'center', fontSize: T.body, marginBottom: S.xl, letterSpacing: '-0.01em' }}>2~3명이어도 엽니다.</p>
           {submitted ? (
             <div style={{
               textAlign: 'center', padding: `56px ${S.md}`,
