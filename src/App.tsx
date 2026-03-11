@@ -55,7 +55,7 @@ const WHO = [
   '평택·경기남부 근처에 사시는 분',
 ];
 
-const HOW = ['2~3명, 카페에서 1시간 반', '엉클조가 먼저 경험 나눕니다', '나머지는 같이 이야기합니다', '강의 아닙니다'];
+const HOW = ['5명 이내, 카페에서 1시간 반', '엉클조가 먼저 경험 나눕니다', '나머지는 같이 이야기합니다', '강의 아닙니다'];
 
 const AFTER = [
   { icon: '💬', text: '아이에게 "경제" 대신 꺼낼 첫 마디를 정하게 됩니다' },
@@ -115,7 +115,7 @@ export default function App() {
             boxShadow: `0 6px 20px rgba(255,111,15,0.35)`,
           }}>
             첫 번째 멤버 되기
-            <span style={{ display: 'block', fontSize: T.caption, fontWeight: 400, opacity: 0.85, marginTop: '3px' }}>평택 · 2~3명 소규모</span>
+            <span style={{ display: 'block', fontSize: T.caption, fontWeight: 400, opacity: 0.85, marginTop: '3px' }}>평택 · 5명 소규모</span>
           </a>
         </div>
       </section>
@@ -309,7 +309,7 @@ export default function App() {
           같이 만들어봐요
         </p>
         <p style={{ fontSize: T.body, color: 'rgba(255,255,255,0.8)', marginBottom: S.lg, letterSpacing: '-0.01em' }}>
-          2~3명이어도 시작합니다.
+          5명 소규모로 진행합니다.
         </p>
         <a href="#apply" style={{
           display: 'inline-block', background: '#fff', color: C.primary,
@@ -367,7 +367,7 @@ export default function App() {
       <section id="apply" style={{ padding: `${S.section} ${S.md}`, background: C.bg }}>
         <div style={{ maxWidth: '640px', margin: '0 auto' }}>
           <h2 style={{ fontSize: T.h2, fontWeight: 700, textAlign: 'center', marginBottom: S.xs, letterSpacing: '-0.03em' }}>첫 번째 멤버가 되어주세요.</h2>
-          <p style={{ color: C.textMuted, textAlign: 'center', fontSize: T.body, marginBottom: S.xl, letterSpacing: '-0.01em' }}>2~3명이어도 시작합니다.</p>
+          <p style={{ color: C.textMuted, textAlign: 'center', fontSize: T.body, marginBottom: S.xl, letterSpacing: '-0.01em' }}>5명 소규모로 진행합니다.</p>
           {submitted ? (
             <div style={{
               textAlign: 'center', padding: `56px ${S.md}`,
