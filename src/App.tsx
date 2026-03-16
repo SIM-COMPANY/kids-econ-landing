@@ -349,16 +349,6 @@ export default function App() {
                 </li>
               ))}
             </ul>
-            <div style={{ borderTop: `1px solid ${C.darkBorder}`, paddingTop: S.md, display: 'flex', gap: S.sm, alignItems: 'flex-start' }}>
-              <span style={{ fontSize: '22px', flexShrink: 0 }}>🎁</span>
-              <div>
-                <p style={{ fontSize: T.small, color: C.primary, fontWeight: 700, marginBottom: '4px', letterSpacing: '-0.01em' }}>참여하시는 분께 드립니다</p>
-                <p style={{ fontSize: T.small, color: '#ddd', lineHeight: 1.7, letterSpacing: '-0.01em' }}>
-                  《효진 선생님의 초등 돈 공부》<br />
-                  <span style={{ fontSize: T.caption, color: C.darkTextMuted }}>용돈 관리부터 주식 투자까지, 집에서 시작하는 우리 아이 첫 경제 교육</span>
-                </p>
-              </div>
-            </div>
           </div>
         </div>
       </section>
