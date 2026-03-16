@@ -189,7 +189,7 @@ export default function App() {
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: S.sm, marginBottom: S.xl }}>
             {[
               { num: '연세대', label: '경제학과 졸업' },
-              { num: '10년', label: '증권사·금융기관' },
+              { num: '10년', label: '증권사·금융권' },
               { num: '20년', label: '금융교육 강사' },
             ].map((s, i) => (
               <div key={i} style={{ background: C.darkSurface, borderRadius: '16px', padding: `${S.md} ${S.sm}` }}>
