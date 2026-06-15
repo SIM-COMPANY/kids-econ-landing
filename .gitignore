@@ -3,3 +3,10 @@ dist
 .DS_Store
 *.local
 .vercel
+.env
+.env.*
+!.env.example
+
+# 로컬 작업 백업 (git 이력으로 충분 — 배포 제외)
+backup/
+_pwa-backup/
