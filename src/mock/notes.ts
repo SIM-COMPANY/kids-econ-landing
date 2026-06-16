@@ -27,17 +27,17 @@ export type Note = {
 // ─── 코호트 주차 정의 (커리큘럼 SSOT · 10주 용돈 연습) ───
 
 export const COHORT_WEEKS: Record<number, { date: string; title: string; mission: string }> = {
-  0:  { date: '2026-06-01', title: '부모 OT · 부모를 같은 배에 태우기',   mission: '우리 집 돈 풍경 한 가지 털어놓기' },
-  1:  { date: '2026-06-08', title: "첫 만남, '내 용돈'이 생긴다",          mission: '한 주 용돈 써보기 — 가장 망설였던 소비 하나 기억해 오기' },
-  2:  { date: '2026-06-15', title: "'잘 모으면 좋은 일이?' 회고",          mission: "한 주 용돈 안에서 '얼마 남았나' 매일 세어 오기" },
-  3:  { date: '2026-06-22', title: "'다 가지려다 다 잃을라' 회고",         mission: "산 것에 '사길 잘함/아쉬움' 표시해 오기" },
-  4:  { date: '2026-06-29', title: "'같은 돈, 뭐가 더 좋을까' 경매 모임",   mission: '사고 싶은 것 2개 중 하나만 골라 오기' },
-  5:  { date: '2026-07-06', title: "'가격을 본다' 회고",                   mission: '같은 물건 두 가게 가격 비교해 오기' },
-  6:  { date: '2026-07-13', title: "'안 보이는 곳에 모으기' 회고",         mission: "이번 주 용돈에서 '조금' 떼어 모아 오기" },
-  7:  { date: '2026-07-20', title: "'비싼 게 꼭 중요한 건 아니야' 회고",    mission: "우리 집에서 '싼데 소중한 것' 하나 찾아 오기" },
-  8:  { date: '2026-07-27', title: "'지금 살 것, 다음에 살 것' 회고",      mission: "'지금 / 다음에' 두 칸으로 갖고 싶은 것 적어 오기" },
-  9:  { date: '2026-08-03', title: "'당장 다 쓰면 나중엔 없어' 회고",      mission: "갖고 싶은 것을 용돈 안에서 '한 번 기다려보기'" },
-  10: { date: '2026-08-10', title: '우리 집 소비 원칙, 수료 회고',         mission: "'우리 집 소비 원칙' 한 줄 + 앞으로의 다짐" },
+  0:  { date: '2026-06-01', title: '부모 OT · 용돈 규칙 세우기',          mission: '우리 집 돈 풍경 한 가지 털어놓기' },
+  1:  { date: '2026-06-08', title: "용돈 계약서 작성 · '내 용돈'이 생긴다",  mission: '용돈 계약서 쓰고 첫 용돈 한 주 써보기' },
+  2:  { date: '2026-06-15', title: '주사위(윷) 놀이 — 잔고 지키기',         mission: '놀이에서 잔고를 지킨 순간 기억해 오기' },
+  3:  { date: '2026-06-22', title: '이솝우화 ① 충동소비',                  mission: '충동적으로 샀다가 아쉬웠던 것 하나 떠올려 오기' },
+  4:  { date: '2026-06-29', title: '경매 놀이 — 같은 돈, 무엇을 고를까',     mission: '경매에서 끝까지 갖고 싶었던 것 하나 골라 오기' },
+  5:  { date: '2026-07-06', title: '쇼핑 리스트 작성',                     mission: '나만의 쇼핑 리스트(당장·1개월·1년·10년) 만들어 오기' },
+  6:  { date: '2026-07-13', title: '통장 만들기 · 체크카드',               mission: '용돈에서 조금 떼어 통장(저금통)에 넣어 오기' },
+  7:  { date: '2026-07-20', title: '이솝우화 ② 과시소비',                  mission: '남 보여주려고 사고 싶었던 것 있었는지 이야기해 오기' },
+  8:  { date: '2026-07-27', title: '함께 장 보기',                        mission: '같은 물건 두 가게 가격 비교해 오기' },
+  9:  { date: '2026-08-03', title: '이솝우화 ③ 모방소비',                  mission: '친구 따라 사고 싶었던 것 있었는지 떠올려 오기' },
+  10: { date: '2026-08-10', title: '가족의 소비 · 수료',                  mission: "'우리 집 소비 원칙' 한 줄 + 가족 여행 예산" },
 };
 
 export const LAST_WEEK = 10;               // 마지막 주차
@@ -104,16 +104,16 @@ export type WeekContent = {
 
 export const WEEK_CONTENT: Record<number, WeekContent> = {
   0:  { week: 0,  videoTitle: '부모 OT 안내 영상',              articleTitle: '시작 전, 부모가 알아둘 3가지' },
-  1:  { week: 1,  videoTitle: '1주차 · 첫 용돈',               articleTitle: '용돈, 얼마가 적당할까요' },
-  2:  { week: 2,  videoTitle: '2주차 · 잘 모으면',             articleTitle: '남은 돈을 세어 보는 습관' },
-  3:  { week: 3,  videoTitle: '3주차 · 다 가지려다 다 잃을라',  videoEmbed: 'https://www.youtube.com/embed/5Y9eRKMtzQg', articleTitle: '기회비용, 아이 눈높이로 설명하기' },
-  4:  { week: 4,  videoTitle: '4주차 · 경매 모임',             articleTitle: '같은 돈, 다른 선택' },
-  5:  { week: 5,  videoTitle: '5주차 · 가격을 본다',           articleTitle: '가격표 읽는 법' },
-  6:  { week: 6,  videoTitle: '6주차 · 안 보이는 곳에 모으기',  articleTitle: '통장과 현금의 차이' },
-  7:  { week: 7,  videoTitle: '7주차 · 비싼 게 중요한 건 아니야', articleTitle: '가격과 가치는 다르다' },
-  8:  { week: 8,  videoTitle: '8주차 · 지금과 다음',           articleTitle: '쇼핑 리스트 만들기' },
-  9:  { week: 9,  videoTitle: '9주차 · 조금 남겨두기',         articleTitle: '황금알을 낳는 거위 이야기' },
-  10: { week: 10, videoTitle: '10주차 · 수료',                articleTitle: '우리 집 소비 원칙 정하기' },
+  1:  { week: 1,  videoTitle: '1주차 · 용돈 계약서',           articleTitle: '용돈 계약서, 이렇게 씁니다' },
+  2:  { week: 2,  videoTitle: '2주차 · 주사위 놀이',           articleTitle: '놀이로 배우는 잔고 지키기' },
+  3:  { week: 3,  videoTitle: '3주차 · 충동소비(이솝우화)',    videoEmbed: 'https://www.youtube.com/embed/5Y9eRKMtzQg', articleTitle: '충동소비 — 기회비용을 아이 눈높이로' },
+  4:  { week: 4,  videoTitle: '4주차 · 경매 놀이',             articleTitle: '경매로 배우는 선택과 포기' },
+  5:  { week: 5,  videoTitle: '5주차 · 쇼핑 리스트',           articleTitle: '쇼핑 리스트 쓰는 법' },
+  6:  { week: 6,  videoTitle: '6주차 · 통장·체크카드',         articleTitle: '통장과 체크카드, 처음이라면' },
+  7:  { week: 7,  videoTitle: '7주차 · 과시소비(이솝우화)',    articleTitle: '과시소비 — 벌거숭이 임금님' },
+  8:  { week: 8,  videoTitle: '8주차 · 함께 장 보기',          articleTitle: '가격을 비교한다는 것' },
+  9:  { week: 9,  videoTitle: '9주차 · 모방소비(이솝우화)',    articleTitle: '모방소비 — 황소와 개구리' },
+  10: { week: 10, videoTitle: '10주차 · 가족의 소비·수료',     articleTitle: '가족 여행으로 배우는 예산' },
 };
 
 export function getWeekContent(week: number): WeekContent {
