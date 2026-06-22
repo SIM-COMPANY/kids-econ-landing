@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import { C, T, S } from '../App';
 import {
   CONTENT_SLOGAN,
@@ -7,6 +7,7 @@ import {
 } from '../mock/content';
 import type { Article } from '../mock/content';
 import { LIBRARY, LETTERS } from '../mock/notes';
+import { fetchContents, type ContentRow } from '../lib/supabase';
 
 // ─── 섹션 제목 ─────────────────────────────────
 
@@ -62,17 +63,52 @@ function ArticleDetail({ article, onBack }: { article: Article; onBack: () => vo
   );
 }
 
+// ─── 경제 동화 상세 (DB contents) ───────────────
+
+function StoryDetail({ story, onBack }: { story: ContentRow; onBack: () => void }) {
+  return (
+    <div style={{ padding: `${S.xl} ${S.md}` }}>
+      <div style={{ maxWidth: '640px', margin: '0 auto' }}>
+        <button
+          onClick={onBack}
+          style={{
+            background: 'transparent', border: 'none', color: C.textMuted,
+            fontSize: T.body, cursor: 'pointer', padding: '4px 0', marginBottom: S.md, letterSpacing: '-0.01em',
+          }}
+        >
+          ← 동화 목록
+        </button>
+        <div style={{ fontSize: '52px', marginBottom: S.sm, textAlign: 'center' }}>{story.thumbnail}</div>
+        <h1 style={{ fontSize: T.h2, fontWeight: 900, color: C.dark, lineHeight: 1.35, letterSpacing: '-0.02em', marginBottom: S.lg, textAlign: 'center' }}>
+          {story.title}
+        </h1>
+        <p style={{ fontSize: T.body, color: C.textSub, lineHeight: 2.0, letterSpacing: '-0.01em', whiteSpace: 'pre-line' }}>
+          {story.body}
+        </p>
+      </div>
+    </div>
+  );
+}
+
 // ─── 콘텐츠 탭 ─────────────────────────────────
 
 export default function ContentTab({ onApply }: { onApply: () => void }) {
   const [openArticle, setOpenArticle] = useState<Article | null>(null);
   const [expandedWhy, setExpandedWhy] = useState<string | null>(null);
+  const [fairytales, setFairytales] = useState<ContentRow[]>([]);
+  const [openStory, setOpenStory] = useState<ContentRow | null>(null);
+
+  useEffect(() => {
+    fetchContents('fairytale').then(setFairytales);
+  }, []);
 
   if (openArticle) {
     return <ArticleDetail article={openArticle} onBack={() => setOpenArticle(null)} />;
   }
+  if (openStory) {
+    return <StoryDetail story={openStory} onBack={() => setOpenStory(null)} />;
+  }
 
-  const stories = LIBRARY.filter((l) => l.kind === 'story');
   const news = LIBRARY.filter((l) => l.kind === 'news');
 
   return (
@@ -177,20 +213,36 @@ export default function ContentTab({ onApply }: { onApply: () => void }) {
           ))}
         </div>
 
-        {/* 경제 동화 */}
-        <SectionTitle title="📖 경제 동화" />
+        {/* 엉클조의 경제동화방 (DB contents) */}
+        <SectionTitle kicker="SERIES" title="📖 엉클조의 경제동화방" />
+        <p style={{ fontSize: T.bodySm, color: C.textMuted, lineHeight: 1.6, marginBottom: S.md, letterSpacing: '-0.01em' }}>
+          익숙한 옛이야기 속에 숨은 '돈 마음'을 들여다보는 시간.
+        </p>
         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: S.sm, marginBottom: S.xxl }}>
-          {stories.map((item) => (
-            <div key={item.id} style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: '14px', padding: S.md }}>
-              <p style={{ fontSize: '24px', marginBottom: '6px' }}>{item.emoji}</p>
-              <p style={{ fontSize: T.bodySm, fontWeight: 700, color: C.dark, lineHeight: 1.4, letterSpacing: '-0.01em', marginBottom: '2px' }}>
-                {item.title}
-              </p>
-              <p style={{ fontSize: T.small, color: C.textMuted, lineHeight: 1.5, letterSpacing: '-0.01em' }}>
-                {item.desc}
-              </p>
-            </div>
-          ))}
+          {fairytales.map((item) => {
+            const teaser = (item.body ?? '').split('\n')[0].slice(0, 30);
+            return (
+              <button
+                key={item.id}
+                onClick={() => setOpenStory(item)}
+                style={{
+                  background: C.bg, border: `1px solid ${C.border}`, borderRadius: '14px', padding: S.md,
+                  cursor: 'pointer', textAlign: 'left',
+                }}
+              >
+                <p style={{ fontSize: '28px', marginBottom: '6px' }}>{item.thumbnail}</p>
+                <p style={{ fontSize: T.bodySm, fontWeight: 700, color: C.dark, lineHeight: 1.4, letterSpacing: '-0.01em', marginBottom: '4px' }}>
+                  {item.title}
+                </p>
+                <p style={{ fontSize: T.small, color: C.textMuted, lineHeight: 1.5, letterSpacing: '-0.01em' }}>
+                  {teaser}…
+                </p>
+                <p style={{ fontSize: T.small, color: C.primary, fontWeight: 700, marginTop: '6px', letterSpacing: '-0.01em' }}>
+                  읽어보기 →
+                </p>
+              </button>
+            );
+          })}
         </div>
 
         {/* 어린이 경제신문 */}

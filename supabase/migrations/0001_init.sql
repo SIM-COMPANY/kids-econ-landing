@@ -99,7 +99,8 @@ create table if not exists public.contents (   -- 동화/신문
   type       text not null check (type in ('fairytale','news')),
   title      text not null,
   body       text,
-  thumbnail  text
+  thumbnail  text,
+  seq        int not null default 0   -- 콘텐츠 탭 노출 순서
 );
 
 -- ─────────── 인증 해석 함수 (★ 전환 시 여기만 교체 ★) ───────────

@@ -100,6 +100,22 @@ export async function upsertCoachNote(token: string, childId: string, week: numb
   await supabase.rpc('upsert_coach_note', { p_token: token, p_child: childId, p_week: week, p_body: body });
 }
 
+// ── 공개 콘텐츠 (동화/신문) ─────────────────────────────────
+// contents RLS = using(true) → 토큰 없이 anon 직접 SELECT 가능.
+export type ContentRow = {
+  id: string;
+  type: 'fairytale' | 'news';
+  title: string;
+  body: string | null;
+  thumbnail: string | null;
+  seq: number;
+};
+export async function fetchContents(type: 'fairytale' | 'news'): Promise<ContentRow[]> {
+  if (!supabase) return [];
+  const { data } = await supabase.from('contents').select('*').eq('type', type).order('seq');
+  return (data ?? []) as ContentRow[];
+}
+
 // TODO(프론트 연결): VisitNote / ContentTab 의 mock 데이터를 위 헬퍼 호출로 교체.
 //   - mock/notes.ts, mock/content.ts → 위 RPC 결과로 대체
 //   - 진입 시 tokenFromPath() → loginWithToken() 으로 세션 잡기
