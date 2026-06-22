@@ -90,6 +90,10 @@ export type ParentChild = {
   current_week: number;
   done_count: number;
 };
+// coach_children 한 행 (부모와 동일 + pending_count = 완료됐는데 코치 한마디 없는 주차 수)
+export type CoachChild = ParentChild & {
+  pending_count: number;
+};
 
 export async function upsertCoachNote(token: string, childId: string, week: number, body: string) {
   if (!supabase) return;

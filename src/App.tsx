@@ -3,6 +3,7 @@ import type { FormEvent } from 'react';
 import VisitNote from './components/VisitNote';
 import ContentTab from './components/ContentTab';
 import ParentLive from './components/ParentLive';
+import CoachLive from './components/CoachLive';
 import { tokenFromPath } from './lib/supabase';
 import { LETTERS } from './mock/notes';
 
@@ -361,10 +362,10 @@ export default function App() {
     window.open(`https://sharer.kakao.com/talk/friends/picker/link?url=${url}`, '_blank');
   };
 
-  // ── 토큰 진입 라우팅 (/p/{token} = 부모 실연결 대시보드) ──
-  // /coach/{token} 은 추후. 토큰 없으면 기존 앱(아래) 그대로.
+  // ── 토큰 진입 라우팅 (/p/{token} = 부모, /coach/{token} = 코치) ──
+  // 토큰 없으면 기존 앱(아래) 그대로.
   const entry = tokenFromPath();
-  if (entry?.role === 'parent') {
+  if (entry) {
     return (
       <div style={{
         fontFamily: "'Pretendard Variable','Pretendard','Apple SD Gothic Neo','Noto Sans KR',sans-serif",
@@ -380,7 +381,9 @@ export default function App() {
           background: C.pageBg, containerType: 'inline-size',
           boxShadow: '0 0 48px rgba(0,0,0,0.07)',
         }}>
-          <ParentLive token={entry.token} />
+          {entry.role === 'coach'
+            ? <CoachLive token={entry.token} />
+            : <ParentLive token={entry.token} />}
         </div>
       </div>
     );
