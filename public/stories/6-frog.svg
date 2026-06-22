@@ -1,0 +1,36 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="황소를 흉내 낸 개구리">
+  <rect width="200" height="200" rx="28" fill="#FFF1E8"/>
+  <!-- 연못 -->
+  <ellipse cx="100" cy="172" rx="78" ry="20" fill="#BFE0C6"/>
+  <!-- 연잎 -->
+  <path d="M150 168a22 22 0 1 0 0 1l-4-1z" fill="#7BA05B"/>
+  <!-- 부풀어 터질 듯한 개구리 몸 -->
+  <circle cx="100" cy="112" r="56" fill="#7FB23E"/>
+  <circle cx="100" cy="112" r="56" fill="none" stroke="#6B9A30" stroke-width="3" stroke-dasharray="4 9" opacity="0.6"/>
+  <!-- 배 -->
+  <ellipse cx="100" cy="128" rx="38" ry="30" fill="#CFE89B"/>
+  <!-- 팽창 효과선 -->
+  <g stroke="#FFC080" stroke-width="3" stroke-linecap="round">
+    <line x1="40" y1="86" x2="30" y2="80"/>
+    <line x1="160" y1="86" x2="170" y2="80"/>
+    <line x1="48" y1="148" x2="38" y2="156"/>
+    <line x1="152" y1="148" x2="162" y2="156"/>
+  </g>
+  <!-- 다리 -->
+  <ellipse cx="58" cy="150" rx="14" ry="9" fill="#6B9A30"/>
+  <ellipse cx="142" cy="150" rx="14" ry="9" fill="#6B9A30"/>
+  <!-- 눈 (위로 볼록) -->
+  <circle cx="74" cy="64" r="18" fill="#7FB23E"/>
+  <circle cx="126" cy="64" r="18" fill="#7FB23E"/>
+  <circle cx="74" cy="60" r="11" fill="#FFFFFF"/>
+  <circle cx="126" cy="60" r="11" fill="#FFFFFF"/>
+  <circle cx="76" cy="61" r="5.5" fill="#1f2a12"/>
+  <circle cx="124" cy="61" r="5.5" fill="#1f2a12"/>
+  <circle cx="78" cy="59" r="1.8" fill="#fff"/>
+  <circle cx="126" cy="59" r="1.8" fill="#fff"/>
+  <!-- 입 (힘주는 표정) -->
+  <path d="M84 104c8 6 24 6 32 0" stroke="#3c5018" stroke-width="3.5" fill="none" stroke-linecap="round"/>
+  <!-- 볼 바람 -->
+  <circle cx="64" cy="104" r="7" fill="#A6CC63" opacity="0.8"/>
+  <circle cx="136" cy="104" r="7" fill="#A6CC63" opacity="0.8"/>
+</svg>

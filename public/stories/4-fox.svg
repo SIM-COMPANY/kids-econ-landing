@@ -1,0 +1,39 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="여우와 포도">
+  <rect width="200" height="200" rx="28" fill="#FFF1E8"/>
+  <!-- 포도 시렁 -->
+  <rect x="20" y="30" width="160" height="9" rx="4" fill="#A9742E"/>
+  <!-- 잎 -->
+  <path d="M150 40c14-4 24 4 22 16-12 4-22-2-22-16z" fill="#7BA05B"/>
+  <path d="M120 40c-12-2-20 6-16 16 11 2 19-4 16-16z" fill="#8FB36A"/>
+  <!-- 포도송이 -->
+  <g fill="#9B6BC2">
+    <circle cx="138" cy="52" r="9"/><circle cx="154" cy="54" r="9"/>
+    <circle cx="146" cy="66" r="9"/><circle cx="162" cy="68" r="9"/>
+    <circle cx="154" cy="80" r="9"/><circle cx="140" cy="82" r="9"/>
+    <circle cx="148" cy="94" r="9"/>
+  </g>
+  <g fill="#B98FDB" opacity="0.7">
+    <circle cx="135" cy="49" r="3"/><circle cx="151" cy="51" r="3"/><circle cx="143" cy="63" r="3"/>
+  </g>
+  <!-- 여우 (올려다봄) -->
+  <g transform="translate(64 150)">
+    <!-- 꼬리 -->
+    <path d="M28 -6c26 4 34 22 24 36-10 10-26 4-30-10z" fill="#E8843C"/>
+    <path d="M44 18c8 6 8 16 0 18-6 1-10-4-8-12z" fill="#FBEFE2"/>
+    <!-- 몸 -->
+    <ellipse cx="6" cy="-2" rx="30" ry="22" fill="#EE8C3E"/>
+    <!-- 머리(위로 향함) -->
+    <path d="M-18 -20c-6-16 6-30 20-30s24 12 20 28c-3 12-16 18-26 14-8-3-12-7-14-12z" fill="#EE8C3E"/>
+    <!-- 귀 -->
+    <path d="M-12 -44l-6-16 16 8z" fill="#EE8C3E"/>
+    <path d="M16 -46l8-16 6 16z" fill="#EE8C3E"/>
+    <path d="M-10 -46l-3-9 8 4z" fill="#9C4B1E"/>
+    <path d="M16 -48l4-9 3 9z" fill="#9C4B1E"/>
+    <!-- 주둥이 -->
+    <path d="M-2 -28c-10-2-16 4-14 10 6 4 14 2 18-4z" fill="#FBEFE2"/>
+    <circle cx="-14" cy="-22" r="3.4" fill="#2a1c10"/>
+    <!-- 눈 -->
+    <circle cx="2" cy="-34" r="3.6" fill="#2a1c10"/>
+    <circle cx="3" cy="-35" r="1.3" fill="#fff"/>
+  </g>
+</svg>

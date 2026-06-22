@@ -9,6 +9,16 @@ import type { Article } from '../mock/content';
 import { LIBRARY, LETTERS } from '../mock/notes';
 import { fetchContents, type ContentRow } from '../lib/supabase';
 
+// ─── 경제동화방 일러스트 (public/stories, seq 매핑) ───
+const STORY_IMG: Record<number, string> = {
+  1: '/stories/1-dog.svg',
+  2: '/stories/2-ant.svg',
+  3: '/stories/3-goose.svg',
+  4: '/stories/4-fox.svg',
+  5: '/stories/5-king.svg',
+  6: '/stories/6-frog.svg',
+};
+
 // ─── 섹션 제목 ─────────────────────────────────
 
 function SectionTitle({ kicker, title }: { kicker?: string; title: string }) {
@@ -78,7 +88,11 @@ function StoryDetail({ story, onBack }: { story: ContentRow; onBack: () => void 
         >
           ← 동화 목록
         </button>
-        <div style={{ fontSize: '52px', marginBottom: S.sm, textAlign: 'center' }}>{story.thumbnail}</div>
+        {STORY_IMG[story.seq] ? (
+          <img src={STORY_IMG[story.seq]} alt={story.title} style={{ width: '200px', maxWidth: '60%', display: 'block', margin: `0 auto ${S.sm}` }} />
+        ) : (
+          <div style={{ fontSize: '52px', marginBottom: S.sm, textAlign: 'center' }}>{story.thumbnail}</div>
+        )}
         <h1 style={{ fontSize: T.h2, fontWeight: 900, color: C.dark, lineHeight: 1.35, letterSpacing: '-0.02em', marginBottom: S.lg, textAlign: 'center' }}>
           {story.title}
         </h1>
@@ -230,7 +244,11 @@ export default function ContentTab({ onApply }: { onApply: () => void }) {
                   cursor: 'pointer', textAlign: 'left',
                 }}
               >
-                <p style={{ fontSize: '28px', marginBottom: '6px' }}>{item.thumbnail}</p>
+                {STORY_IMG[item.seq] ? (
+                  <img src={STORY_IMG[item.seq]} alt={item.title} style={{ width: '100%', display: 'block', borderRadius: '10px', marginBottom: '8px' }} />
+                ) : (
+                  <p style={{ fontSize: '28px', marginBottom: '6px' }}>{item.thumbnail}</p>
+                )}
                 <p style={{ fontSize: T.bodySm, fontWeight: 700, color: C.dark, lineHeight: 1.4, letterSpacing: '-0.01em', marginBottom: '4px' }}>
                   {item.title}
                 </p>

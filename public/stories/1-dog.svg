@@ -1,0 +1,32 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200" width="200" height="200" role="img" aria-label="고깃덩어리를 문 개">
+  <rect width="200" height="200" rx="28" fill="#FFF1E8"/>
+  <!-- 물(반사) -->
+  <rect x="0" y="150" width="200" height="50" rx="28" fill="#FFD9B3" opacity="0.55"/>
+  <path d="M24 162c10-6 18 6 28 0s18 6 28 0 18 6 28 0 18 6 28 0 18 6 28 0" stroke="#FFC080" stroke-width="3" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <!-- 개 몸통 -->
+  <ellipse cx="104" cy="118" rx="46" ry="34" fill="#D98A3D"/>
+  <!-- 뒷다리 -->
+  <ellipse cx="132" cy="146" rx="11" ry="14" fill="#C8783090"/>
+  <!-- 꼬리 -->
+  <path d="M148 108c18-10 26-2 24 10-2 10-12 10-18 4" fill="#D98A3D"/>
+  <!-- 머리 -->
+  <circle cx="74" cy="92" r="34" fill="#E0974A"/>
+  <!-- 귀 -->
+  <path d="M50 70c-12-2-18 10-12 22 6 8 16 4 18-6z" fill="#B96B26"/>
+  <path d="M96 66c12-4 20 6 16 18-4 9-15 7-18-3z" fill="#B96B26"/>
+  <!-- 주둥이 -->
+  <ellipse cx="64" cy="104" rx="20" ry="15" fill="#F0B877"/>
+  <circle cx="50" cy="102" r="5" fill="#3a2a1a"/>
+  <!-- 눈 -->
+  <circle cx="70" cy="86" r="5" fill="#2a1c10"/>
+  <circle cx="88" cy="86" r="5" fill="#2a1c10"/>
+  <circle cx="71.5" cy="84.5" r="1.6" fill="#fff"/>
+  <circle cx="89.5" cy="84.5" r="1.6" fill="#fff"/>
+  <!-- 입에 문 고깃덩어리 -->
+  <g transform="translate(40 116) rotate(-8)">
+    <rect x="-26" y="0" width="52" height="26" rx="13" fill="#E8736B"/>
+    <rect x="-22" y="4" width="44" height="18" rx="9" fill="#F2A39C"/>
+    <circle cx="-26" cy="6" r="6" fill="#FBEFE2"/>
+    <circle cx="-26" cy="20" r="6" fill="#FBEFE2"/>
+  </g>
+</svg>
