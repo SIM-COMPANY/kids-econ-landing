@@ -10,3 +10,8 @@ dist
 # 로컬 작업 백업 (git 이력으로 충분 — 배포 제외)
 backup/
 _pwa-backup/
+
+# 로컬 셋업 합본(생성물 — 마이그레이션 원본으로 충분)
+
+# 로컬 생성 SQL 합본/업데이트(원본=migrations·seed)
+supabase/_*.sql
