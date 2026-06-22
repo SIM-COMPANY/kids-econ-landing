@@ -1,13 +1,8 @@
 import { useState, useEffect } from 'react';
 import { C, T, S } from '../App';
-import {
-  CONTENT_SLOGAN,
-  WHY_ARTICLES,
-  NOTE_ARTICLES,
-} from '../mock/content';
-import type { Article } from '../mock/content';
+import { CONTENT_SLOGAN } from '../mock/content';
 import { LIBRARY, LETTERS } from '../mock/notes';
-import { fetchContents, type ContentRow } from '../lib/supabase';
+import { fetchContents, fetchArticles, type ContentRow, type ArticleRow } from '../lib/supabase';
 
 // ─── 경제동화방 일러스트 (public/stories, seq 매핑) ───
 const STORY_IMG: Record<number, string> = {
@@ -36,9 +31,19 @@ function SectionTitle({ kicker, title }: { kicker?: string; title: string }) {
   );
 }
 
-// ─── 아티클 상세 ───────────────────────────────
+// ─── 기둥 설정 ────────────────────────────────
+const PILLARS = [
+  { key: 'all',         label: '전체' },
+  { key: 'philosophy',  label: '🅓 철학' },
+  { key: 'parent',      label: '🅐 부모' },
+  { key: 'emotion',     label: '🅑 정서' },
+  { key: 'practice',    label: '🅒 실무' },
+];
 
-function ArticleDetail({ article, onBack }: { article: Article; onBack: () => void }) {
+// ─── 아티클 상세 (DB ArticleRow) ──────────────
+
+function ArticleDetail({ article, onBack }: { article: ArticleRow; onBack: () => void }) {
+  const pillar = PILLARS.find(p => p.key === article.pillar);
   return (
     <div style={{ padding: `${S.xl} ${S.md}` }}>
       <div style={{ maxWidth: '640px', margin: '0 auto' }}>
@@ -52,15 +57,34 @@ function ArticleDetail({ article, onBack }: { article: Article; onBack: () => vo
           ← 목록
         </button>
         <div style={{ fontSize: '40px', marginBottom: S.sm }}>{article.thumbnail}</div>
-        <h1 style={{ fontSize: T.h2, fontWeight: 900, color: C.dark, lineHeight: 1.35, letterSpacing: '-0.02em', marginBottom: '6px' }}>
+        {pillar && pillar.key !== 'all' && (
+          <span style={{
+            display: 'inline-block', fontSize: T.small, fontWeight: 700,
+            color: C.primary, background: C.orange10, borderRadius: '20px',
+            padding: '3px 10px', marginBottom: S.sm, letterSpacing: '-0.01em',
+          }}>
+            {pillar.label}
+          </span>
+        )}
+        <h1 style={{ fontSize: T.h2, fontWeight: 900, color: C.dark, lineHeight: 1.35, letterSpacing: '-0.02em', marginBottom: '6px', display: 'block' }}>
           {article.title}
         </h1>
         <p style={{ fontSize: T.small, color: C.textMuted, marginBottom: S.lg, letterSpacing: '-0.01em' }}>
-          {article.date}
+          {article.published_at}
         </p>
-        <p style={{ fontSize: T.bodySm, color: C.textSub, lineHeight: 1.9, letterSpacing: '-0.01em' }}>
+        <p style={{ fontSize: T.bodySm, color: C.textSub, lineHeight: 1.95, letterSpacing: '-0.01em', whiteSpace: 'pre-line' }}>
           {article.body}
         </p>
+        {article.video_id && (
+          <div style={{ marginTop: S.lg, borderRadius: '14px', overflow: 'hidden', position: 'relative', paddingTop: '56.25%' }}>
+            <iframe
+              src={`https://www.youtube.com/embed/${article.video_id}`}
+              title="관련 영상"
+              style={{ position: 'absolute', inset: 0, width: '100%', height: '100%', border: 'none' }}
+              allowFullScreen
+            />
+          </div>
+        )}
         {article.more && (
           <div style={{ marginTop: S.lg, background: C.surface, borderRadius: '14px', padding: S.md }}>
             <p style={{ fontSize: T.bodySm, color: C.textSub, lineHeight: 1.8, letterSpacing: '-0.01em' }}>
@@ -107,13 +131,15 @@ function StoryDetail({ story, onBack }: { story: ContentRow; onBack: () => void 
 // ─── 콘텐츠 탭 ─────────────────────────────────
 
 export default function ContentTab({ onApply }: { onApply: () => void }) {
-  const [openArticle, setOpenArticle] = useState<Article | null>(null);
-  const [expandedWhy, setExpandedWhy] = useState<string | null>(null);
+  const [openArticle, setOpenArticle] = useState<ArticleRow | null>(null);
+  const [selectedPillar, setSelectedPillar] = useState<string>('all');
+  const [articles, setArticles] = useState<ArticleRow[]>([]);
   const [fairytales, setFairytales] = useState<ContentRow[]>([]);
   const [openStory, setOpenStory] = useState<ContentRow | null>(null);
 
   useEffect(() => {
     fetchContents('fairytale').then(setFairytales);
+    fetchArticles().then(setArticles);
   }, []);
 
   if (openArticle) {
@@ -122,6 +148,10 @@ export default function ContentTab({ onApply }: { onApply: () => void }) {
   if (openStory) {
     return <StoryDetail story={openStory} onBack={() => setOpenStory(null)} />;
   }
+
+  const filteredArticles = selectedPillar === 'all'
+    ? articles
+    : articles.filter(a => a.pillar === selectedPillar);
 
   const news = LIBRARY.filter((l) => l.kind === 'news');
 
@@ -145,60 +175,41 @@ export default function ContentTab({ onApply }: { onApply: () => void }) {
           </p>
         </div>
 
-        {/* 시리즈 1 — 왜 이렇게 가르칠까 */}
-        <SectionTitle kicker="SERIES" title="왜 이렇게 가르칠까" />
-        <p style={{ fontSize: T.bodySm, color: C.textMuted, lineHeight: 1.6, marginBottom: S.md, letterSpacing: '-0.01em' }}>
-          엉클조가 이렇게 가르치는 이유, 짧게 그리고 깊게.
-        </p>
-        <div style={{ display: 'flex', flexDirection: 'column', gap: S.sm, marginBottom: S.xxl }}>
-          {WHY_ARTICLES.map((a) => {
-            const open = expandedWhy === a.id;
-            return (
-              <div key={a.id} style={{ background: C.bg, border: `1px solid ${C.border}`, borderRadius: '16px', padding: S.md }}>
-                <div style={{ display: 'flex', alignItems: 'flex-start', gap: S.sm }}>
-                  <span style={{ fontSize: '24px', lineHeight: 1.2 }}>{a.thumbnail}</span>
-                  <div style={{ flex: 1 }}>
-                    <p style={{ fontSize: T.body, fontWeight: 800, color: C.dark, letterSpacing: '-0.01em', marginBottom: '4px', lineHeight: 1.4 }}>
-                      {a.title}
-                    </p>
-                    <p style={{ fontSize: T.bodySm, color: C.textSub, lineHeight: 1.7, letterSpacing: '-0.01em' }}>
-                      {a.body}
-                    </p>
-                  </div>
-                </div>
-                {a.more && (
-                  <>
-                    {open && (
-                      <div style={{ marginTop: S.sm, background: C.surface, borderRadius: '12px', padding: S.md }}>
-                        <p style={{ fontSize: T.bodySm, color: C.textSub, lineHeight: 1.8, letterSpacing: '-0.01em' }}>
-                          {a.more}
-                        </p>
-                      </div>
-                    )}
-                    <button
-                      onClick={() => setExpandedWhy(open ? null : a.id)}
-                      style={{
-                        marginTop: S.sm, background: 'transparent', border: 'none',
-                        color: C.primary, fontSize: T.small, fontWeight: 700, cursor: 'pointer',
-                        padding: '2px 0', letterSpacing: '-0.01em',
-                      }}
-                    >
-                      {open ? '접기 ▴' : '더 자세히 ▾'}
-                    </button>
-                  </>
-                )}
-              </div>
-            );
-          })}
-        </div>
-
-        {/* 시리즈 2 — 엉클조의 자녀경제 노트 */}
+        {/* 엉클조의 자녀경제 노트 — 통합 시리즈 */}
         <SectionTitle kicker="SERIES" title="엉클조의 자녀경제 노트" />
         <p style={{ fontSize: T.bodySm, color: C.textMuted, lineHeight: 1.6, marginBottom: S.md, letterSpacing: '-0.01em' }}>
-          매주 쌓이는, 돈과 아이에 관한 짧은 글.
+          돈과 아이에 관한 짧은 글. 검색·공유로 만나는 부모들과 나눠요.
         </p>
+
+        {/* 기둥 필터 탭 */}
+        <div style={{
+          display: 'flex', gap: '8px', overflowX: 'auto', paddingBottom: '4px',
+          marginBottom: S.md, scrollbarWidth: 'none',
+        }}>
+          {PILLARS.map(p => (
+            <button
+              key={p.key}
+              onClick={() => setSelectedPillar(p.key)}
+              style={{
+                flexShrink: 0, padding: '6px 14px', borderRadius: '20px', border: 'none',
+                fontSize: T.small, fontWeight: 700, cursor: 'pointer', letterSpacing: '-0.01em',
+                background: selectedPillar === p.key ? C.primary : C.surface,
+                color: selectedPillar === p.key ? '#fff' : C.textMuted,
+                transition: 'background 0.15s',
+              }}
+            >
+              {p.label}
+            </button>
+          ))}
+        </div>
+
         <div style={{ display: 'flex', flexDirection: 'column', gap: S.sm, marginBottom: S.xxl }}>
-          {NOTE_ARTICLES.map((a) => (
+          {filteredArticles.length === 0 && (
+            <p style={{ fontSize: T.bodySm, color: C.textMuted, padding: S.md, textAlign: 'center' }}>
+              불러오는 중…
+            </p>
+          )}
+          {filteredArticles.map((a) => (
             <button
               key={a.id}
               onClick={() => setOpenArticle(a)}
@@ -219,10 +230,10 @@ export default function ContentTab({ onApply }: { onApply: () => void }) {
                   {a.title}
                 </p>
                 <p style={{ fontSize: T.small, color: C.textMuted, letterSpacing: '-0.01em' }}>
-                  {a.date}
+                  {PILLARS.find(p => p.key === a.pillar)?.label ?? ''} · {a.published_at}
                 </p>
               </div>
-              <span style={{ color: C.textMuted, fontSize: '16px' }}>→</span>
+              <span style={{ color: C.textMuted, fontSize: '16px', flexShrink: 0 }}>→</span>
             </button>
           ))}
         </div>

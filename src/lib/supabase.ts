@@ -116,6 +116,31 @@ export async function fetchContents(type: 'fairytale' | 'news'): Promise<Content
   return (data ?? []) as ContentRow[];
 }
 
+// ── 아티클 (자녀경제 노트) ─────────────────────────────────
+// articles RLS = locked=false 행은 anon 직접 SELECT 가능.
+export type ArticleRow = {
+  id: string;
+  series: string;
+  title: string;
+  body: string | null;
+  more: string | null;
+  thumbnail: string | null;
+  pillar: string | null;    // 'philosophy' | 'parent' | 'emotion' | 'practice'
+  video_id: string | null;
+  published_at: string | null;
+  seq: number;
+  locked: boolean;
+};
+export async function fetchArticles(): Promise<ArticleRow[]> {
+  if (!supabase) return [];
+  const { data } = await supabase
+    .from('articles')
+    .select('*')
+    .eq('locked', false)
+    .order('seq');
+  return (data ?? []) as ArticleRow[];
+}
+
 // TODO(프론트 연결): VisitNote / ContentTab 의 mock 데이터를 위 헬퍼 호출로 교체.
 //   - mock/notes.ts, mock/content.ts → 위 RPC 결과로 대체
 //   - 진입 시 tokenFromPath() → loginWithToken() 으로 세션 잡기
